@@ -1,108 +1,81 @@
 # Uppgift5.py
-# Programmering 1 – Moment 5: Practical Exercises
-# Övningar med listor
+# Programming 1 – Moment 5: Simple Contact List Manager
 
-def exercise_1():
-    colors = ["red", "blue", "green"]
-    print("Colors list:", colors)
+def normalized(name: str) -> str:
+    """Trimma mellanslag och jämna ut versaler för jämförelser."""
+    return name.strip().lower()
 
-def exercise_2():
-    colors = ["red", "blue", "green"]
-    print("First color:", colors[0])
-    print("Last color:", colors[-1])
+def add_contact(contacts):
+    name = input("Enter name: ").strip()
+    if not name:
+        print("No name entered.")
+        return
+    # Bonus: förhindra dubletter (case-insensitivt)
+    if any(normalized(name) == normalized(c) for c in contacts):
+        print(f"'{name}' is already in the list.")
+        return
+    contacts.append(name)
+    print(f"Added: {name}")
 
-def exercise_3():
-    colors = ["red", "blue", "green"]
-    print("Original list:", colors)
-    colors[1] = "yellow"
-    print("Updated list:", colors)
+def show_contacts(contacts):
+    if not contacts:
+        print("No contacts yet.")
+        return
+    # Bonus: sortera alfabetiskt vid utskrift (utan att ändra original-ordning)
+    print("Contacts:")
+    for c in sorted(contacts, key=lambda s: s.lower()):
+        print(f"- {c}")
 
-def exercise_4():
-    colors = ["red", "blue", "green"]
-    colors.append("purple")
-    colors.remove("red")
-    print("Updated list:", colors)
-
-def exercise_5():
-    colors = ["red", "blue", "green"]
-    for c in colors:
-        print("Color:", c)
-
-def exercise_6():
-    names = []
-    for i in range(5):
-        name = input(f"Enter name {i+1}: ")
-        names.append(name)
-    print("All names:", names)
-    return names
-
-def exercise_7():
-    names = []
-    for i in range(5):
-        name = input(f"Enter name {i+1}: ")
-        names.append(name)
-    print("All names:", names)
-    print("Total names:", len(names))
-    return names
-
-def exercise_8():
-    names = []
-    for i in range(5):
-        name = input(f"Enter name {i+1}: ")
-        names.append(name)
-    search = input("Enter a name to search for: ")
-    if search in names:
-        print(search, "is in the list!")
+def search_contact(contacts):
+    query = input("Enter name to search: ").strip()
+    if not query:
+        print("No name entered.")
+        return
+    found = any(normalized(query) == normalized(c) for c in contacts)
+    if found:
+        print(f"'{query}' is in the list.")
     else:
-        print(search, "is NOT in the list.")
+        print(f"'{query}' is NOT in the list.")
 
-def bonus():
-    numbers = [5, 3, 8, 3, 2, 5, 1, 8, 2]
-    unique_sorted = sorted(set(numbers))
-    print("Original list:", numbers)
-    print("Without duplicates, sorted:", unique_sorted)
+def remove_contact(contacts):
+    target = input("Enter name to remove: ").strip()
+    if not target:
+        print("No name entered.")
+        return
+    # Hitta exakt match case-insensitivt och ta bort just det lagrade värdet
+    for i, c in enumerate(contacts):
+        if normalized(c) == normalized(target):
+            removed = contacts.pop(i)
+            print(f"Removed: {removed}")  # Bonus: bekräftelse
+            return
+    print(f"'{target}' was not found.")
 
-
-# --- Meny ---
 def menu():
+    contacts = []  # tom lista i början
+
     while True:
-        print("\n==== MENU (Uppgift 5) ====")
-        print("1. Exercise 1: Create a list")
-        print("2. Exercise 2: Access list items")
-        print("3. Exercise 3: Update list item")
-        print("4. Exercise 4: Add and remove items")
-        print("5. Exercise 5: Loop through list")
-        print("6. Exercise 6: Build a list from user input")
-        print("7. Exercise 7: Count items")
-        print("8. Exercise 8: Check if value exists")
-        print("9. Bonus: Sort and remove duplicates")
-        print("0. Quit")
+        print("\n==== CONTACT LIST ====")
+        print("1. Add a contact")
+        print("2. Show all contacts")
+        print("3. Search for a contact")
+        print("4. Remove a contact")
+        print("5. Quit")
 
         choice = input("Choose an option: ").strip()
 
-        if choice == "0":
+        if choice == "1":
+            add_contact(contacts)
+        elif choice == "2":
+            show_contacts(contacts)
+        elif choice == "3":
+            search_contact(contacts)
+        elif choice == "4":
+            remove_contact(contacts)
+        elif choice == "5":
             print("Goodbye!")
             break
-        elif choice == "1":
-            exercise_1()
-        elif choice == "2":
-            exercise_2()
-        elif choice == "3":
-            exercise_3()
-        elif choice == "4":
-            exercise_4()
-        elif choice == "5":
-            exercise_5()
-        elif choice == "6":
-            exercise_6()
-        elif choice == "7":
-            exercise_7()
-        elif choice == "8":
-            exercise_8()
-        elif choice == "9":
-            bonus()
         else:
-            print("Invalid choice. Please try again.")
+            print("Please choose 1, 2, 3, 4, or 5.")
 
 if __name__ == "__main__":
     menu()
