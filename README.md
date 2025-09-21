@@ -1,6 +1,6 @@
 # Uppgift 5 – Simple Contact List Manager
 
-## 📖 Beskrivning
+## Beskrivning
 Ett menybaserat program som låter användaren bygga och hantera en kontaktlista med en vanlig Python-lista.
 
 ### Funktioner
@@ -12,7 +12,7 @@ Ett menybaserat program som låter användaren bygga och hantera en kontaktlista
 
 ---
 
-## ▶️ Så här kör du
+## Så här kör du
 Öppna terminalen i mappen där filen ligger:
 ```bash
 py Uppgift5.py
@@ -21,7 +21,7 @@ py Uppgift5.py
 
 ---
 
-## 💻 Exempel
+## Exempel
 ```
 ==== CONTACT LIST ====
 1. Add a contact
@@ -47,7 +47,7 @@ Contacts:
 
 ---
 
-## 📂 Filstruktur
+## Filstruktur
 ```
 Uppgift-5/
 │
@@ -57,5 +57,5 @@ Uppgift-5/
 
 ---
 
-## ✍️ Författare
-- *Ditt namn här*
+## Författare
+- Lucas Bergman
