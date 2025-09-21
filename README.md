@@ -1,6 +1,6 @@
 # Uppgift 5 – Listövningar (menyversion)
 
-## 📖 Beskrivning
+## Beskrivning
 Detta program innehåller flera övningar för att träna på att skapa och hantera **listor i Python**.  
 Alla övningar körs via en meny i en enda fil.
 
@@ -17,7 +17,7 @@ Alla övningar körs via en meny i en enda fil.
 
 ---
 
-## ▶️ Så här kör du
+## Så här kör du
 Öppna terminalen i mappen där filen ligger och skriv:
 ```bash
 py Uppgift5.py
@@ -26,7 +26,7 @@ py Uppgift5.py
 
 ---
 
-## 💻 Exempelutskrift
+## Exempelutskrift
 ```
 ==== MENU (Uppgift 5) ====
 1. Exercise 1: Create a list
@@ -45,7 +45,7 @@ Colors list: ['red', 'blue', 'green']
 
 ---
 
-## 📂 Filstruktur
+## Filstruktur
 ```
 Uppgift-5/
 │
@@ -55,5 +55,5 @@ Uppgift-5/
 
 ---
 
-## ✍️ Författare
-- *Ditt namn här*
+## Författare
+- Lucas Bergman
